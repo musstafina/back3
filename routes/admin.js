@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const isAdmin = require('../middleware/authMiddleware'); 
-const { renderAdminPanel, addUser, editUser, deleteUser } = require('../controllers/adminController'); 
+const { renderAdminPanel, addUser, editUserForm, editUser, deleteUser } = require('../controllers/adminController'); 
 
-router.get('/', isAdmin, renderAdminPanel);
+router.get('/', renderAdminPanel);
 
-router.post('/add-user', isAdmin, addUser);
+router.post('/add-user',  addUser);
 
-router.put('/edit-user/:userId', isAdmin, editUser);
+router.get('/edit-user/:userId', editUserForm);
+router.post('/edit-user/:userId',  editUser);
 
-router.delete('/delete-user/:userId', isAdmin, deleteUser);
+router.post('/delete-user/:userId', deleteUser);
 
 module.exports = router;

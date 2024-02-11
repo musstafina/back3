@@ -1,9 +1,11 @@
 const express = require('express');
 const path = require('path')
 const collection = require('./mongoDB')
-// const { createAdmin } = require('./controllers/adminController');
+
 const signupRoute = require('../routes/signup');
 const loginRoute = require('../routes/login');
+const adminRoute = require('../routes/admin'); 
+
 
 const app = express();
 
@@ -17,6 +19,8 @@ app.use(express.static("public"))
 
 app.use('/', loginRoute);
 app.use('/signup', signupRoute);
+app.use('/admin', adminRoute); 
+
 
 app.get("/home", (req, res) => {
     res.render("home");

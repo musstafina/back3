@@ -39,19 +39,34 @@ async function renderAdminPanel(req, res) {
 }
 
 async function addUser(req, res) {
-    const { username, password } = req.body;
+    const {username, password } = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, saltRounds); 
         const newUser = new collection({
+            name: username,
             username,
             password: hashedPassword,
-            // reminder: need other properties
+            userId:generateUserID()
+
         });
         await newUser.save();
         res.redirect('/admin');
     } catch (error) {
         console.error("Error adding user:", error);
         res.status(500).send("An error occurred while adding user.");
+    }
+}
+async function editUserForm(req, res) {
+    try {
+        const userId = req.params.userId;
+        const user = await collection.findById(userId);
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+        res.render("edit-user", { user });
+    } catch (error) {
+        console.error("Error rendering edit user form:", error);
+        res.status(500).send("An error occurred while rendering edit user form.");
     }
 }
 
@@ -83,6 +98,7 @@ module.exports = {
     createAdmin,
     renderAdminPanel,
     addUser,
+    editUserForm,
     editUser,
     deleteUser
 };
