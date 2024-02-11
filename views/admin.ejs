@@ -16,9 +16,9 @@
                 <li>
                     <%= user.username %>
                     <form action="/admin/delete-user/<%= user._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                        <button type="submit">Delete</button>
+                        <button class="delete-btn" type="submit">Delete</button>
                     </form>
-                    <a href="/admin/edit-user/<%= user._id %>">Edit</a>
+                    <a class="edit-btn" href="/admin/edit-user/<%= user._id %>">Edit</a>
                 </li>
             <% }); %>
         </ul>
