@@ -5,10 +5,11 @@ const collection = require('./mongoDB')
 const signupRoute = require('../routes/signup');
 const loginRoute = require('../routes/login');
 const adminRoute = require('../routes/admin'); 
+const weatherRoute = require('../routes/weather');
+
 
 
 const app = express();
-
 
 app.use(express.urlencoded({ extended: false }));
 
@@ -16,10 +17,11 @@ app.set('view engine', 'ejs');
 
 app.use(express.static("public"))
 
-
 app.use('/', loginRoute);
 app.use('/signup', signupRoute);
-app.use('/admin', adminRoute); 
+app.use('/admin', adminRoute);
+app.use('/weather', weatherRoute);
+
 
 
 app.get("/home", (req, res) => {

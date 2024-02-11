@@ -34,10 +34,10 @@ li {
     border: 1px solid #ddd;
     border-radius: 5px;
     background-color: #f9f9f9;
-    display: flex; /* Use flexbox for positioning */
-    justify-content: space-between; /* Space between content */
-    align-items: center; /* Align items vertically */
-    position: relative; /* To position buttons relative to the list item */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    position: relative; 
 
 }
 
@@ -58,15 +58,15 @@ a {
     padding: 5px 10px;
     border-radius: 3px;
     cursor: pointer;
-    position: absolute; /* Position absolutely within the list item */
-    top: 50%; /* Vertically center the buttons */
-    transform: translateY(-50%); /* Adjust vertical position */
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
     right: 5px; /
 }
 
 .edit-btn {
-    right: 70px; /* Adjust horizontal position for edit button */
-    padding: 3px 8px; /* Adjust padding for edit button */
+    right: 70px; 
+    padding: 3px 8px; 
 
 }
 

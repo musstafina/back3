@@ -1,0 +1,39 @@
+body {
+    padding-top: 56px;
+    font-family: 'Arial', sans-serif;
+    background-color: white;
+ }
+
+nav {
+    background-color: rgba(124, 62, 62, 0.759);
+}
+
+nav a {
+    color: white;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 80px;
+}
+.weather-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.weather-info {
+    width: 48%;
+    border-right: 2px solid #ccc;
+    padding-right: 20px;
+}
+
+.weather-map {
+    width: 48%;
+    padding-left: 20px;
+}
+
+#map {
+    height: 500px;
+    width: 100%;
+}
