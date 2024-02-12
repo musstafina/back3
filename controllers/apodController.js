@@ -1,4 +1,6 @@
 const axios = require('axios');
+const APOD = require('../models/apod');
+
 
 exports.renderInputForm = (req, res) => {
   res.render('apodInputForm');
@@ -15,6 +17,8 @@ exports.getAPOD = async (req, res) => {
       imageUrl: response.data.url,
       explanation: response.data.explanation
     };
+    const apod = new APOD(apodData);
+    await apod.save();
 
     res.render('apod', { apodData });
   } catch (error) {
