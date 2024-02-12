@@ -6,6 +6,7 @@ const signupRoute = require('../routes/signup');
 const loginRoute = require('../routes/login');
 const adminRoute = require('../routes/admin'); 
 const weatherRoute = require('../routes/weather');
+const apodRoutes = require('../routes/apod');
 
 
 
@@ -21,6 +22,8 @@ app.use('/', loginRoute);
 app.use('/signup', signupRoute);
 app.use('/admin', adminRoute);
 app.use('/weather', weatherRoute);
+app.use('/apod', apodRoutes);
+
 
 
 
