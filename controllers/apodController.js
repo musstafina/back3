@@ -13,6 +13,7 @@ exports.getAPOD = async (req, res) => {
     const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=gx4UUqR0d5fjbelmO7BkXoDXOj5bL4SmWfmf20CP&date=${date}`);
 
     const apodData = {
+      date: date,
       title: response.data.title,
       imageUrl: response.data.url,
       explanation: response.data.explanation
