@@ -9,8 +9,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+  }
+
+nav {
+    background-color: rgba(124, 62, 62, 0.759);
 }
 
+nav a {
+    color: white;
+}
+ 
+.navbar-brand {
+  margin-left: 10px;
+}
 
 h2 {
     text-align: center;
@@ -47,7 +59,7 @@ h2 {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #472dbb;
+    background-color: rgba(124, 62, 62, 0.759);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -55,7 +67,7 @@ h2 {
   }
 
   .submit-btn:hover {
-    background-color: #4565a0;
+    background-color: rgb(124, 62, 62);
   }
 
   p {
