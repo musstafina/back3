@@ -17,14 +17,22 @@ nav a {
     margin-right: 80px;
 }
 
+
 .container {
     max-width: 800px;
+    margin: 0;
     background-color: white;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .list-group-item {
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 10px; 
+    }
 }

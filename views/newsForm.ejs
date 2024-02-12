@@ -9,7 +9,6 @@
 
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="/home"> Weather App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,15 +30,16 @@
     </nav>
 
     <div class="container mt-5 d-flex align-items-center justify-content-center">
-        <div class="weather-container">
+        <div class="news-container">
             <form action="/news/fetch" method="GET" class="mb-4 text-center">
                 <div class="form-group">
                     <label for="country" class="mb-4">Select Country:</label>
                     <select id="country" name="country" class="form-control" required>
                         <option value="us">United States</option>
                         <option value="gb">United Kingdom</option>
-                        <option value="ca">Canada</option>
-                        <!-- i will add  -->
+                        <option value="de">Germany</option>
+                        <option value="ru">Russia</option>
+                        <option value="fr">France</option>                    
                     </select>
                 </div>
                 <div class="form-group">
