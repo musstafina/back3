@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top Headlines</title>
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APOD History</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/history.css">
 
 
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="/home"> Weather App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,29 +45,33 @@
         </div>
     </nav>
 
-  <div class="container mt-5">
-    <h1 class="mb-4">Top Headlines</h1>
-    <% if (articles && articles.length > 0) { %>
-        <div class="list-group">
-            <% articles.forEach(article => { %>
-                <a href="<%= article.url %>" class="list-group-item list-group-item-action">
-                    <h5 class="mb-1"><%= article.title %></h5>
-                    <p class="mb-1"><%= article.description %></p>
-                    <small>Published At: <%= new Date(article.publishedAt).toLocaleString() %></small>
-                </a>
+    <div class="container mt-5">
+        <h1>NASA History</h1>
+        <ul>
+            <% historyEntries.forEach(entry => { %>
+                <li>
+                    <div class="container mt-3 mb-3">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="<%= entry.responseData.imageUrl %>" class="img-fluid" alt="APOD">
+                            </div>
+                            <div class="col-md-8">
+                                <h2><%= entry.responseData.title %></h2>
+                                <p><strong>Date:</strong> <%= entry.responseData.date %></p>
+                                <p><strong>Explanation:</strong> <%= entry.responseData.explanation %></p>
+                                <p><strong>Request Date:</strong> <%= new Date(entry.requestDate).toLocaleString() %></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             <% }); %>
-        </div>
-    <% } else { %>
-        <p>No news articles available.</p>
-    <% } %>
-</div>
-
-<footer class="fixed-bottom bg-light text-center py-2">
-    <p>Merlenkyzy Nargiz SE-2204</p>
-</footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
-
+        </ul>
+    </div>
+    <footer class="fixed-bottom bg-light text-center py-2">
+        <p>Merlenkyzy Nargiz SE-2204</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

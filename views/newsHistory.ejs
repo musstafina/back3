@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Top Headlines</title>
-  <link rel="stylesheet" href="/news.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News History</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/history.css">
 
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg fixed-top">
         <a class="navbar-brand" href="/home"> Weather App</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,29 +44,30 @@
         </div>
     </nav>
 
-  <div class="container mt-5">
-    <h1 class="mb-4">Top Headlines</h1>
-    <% if (articles && articles.length > 0) { %>
-        <div class="list-group">
-            <% articles.forEach(article => { %>
-                <a href="<%= article.url %>" class="list-group-item list-group-item-action">
-                    <h5 class="mb-1"><%= article.title %></h5>
-                    <p class="mb-1"><%= article.description %></p>
-                    <small>Published At: <%= new Date(article.publishedAt).toLocaleString() %></small>
-                </a>
-            <% }); %>
-        </div>
-    <% } else { %>
-        <p>No news articles available.</p>
-    <% } %>
-</div>
-
-<footer class="fixed-bottom bg-light text-center py-2">
-    <p>Merlenkyzy Nargiz SE-2204</p>
-</footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
-
+    <div class="container mt-5">
+        <h1 class="mb-4">News History</h1>
+        <% if (historyEntries && historyEntries.length > 0) { %>
+            <div class="list-group">
+                <% historyEntries.forEach(entry => { %>
+                    <div class="list-group-item">
+                        <h5 class="mb-1"><%= entry.apiName %></h5>
+                        <p class="mb-1">Request Data: country: <%= entry.requestData.country %>, category: <%= entry.requestData.category %></p>
+                        <% if (entry.responseData && entry.responseData.length > 0) { %>
+                            <p>Title: <%= entry.responseData[0].title %></p>
+                        <% } %>
+                        <small>Request Date: <%= new Date(entry.requestDate).toLocaleString() %></small>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p>No history entries available.</p>
+        <% } %>
+    </div>
+    <footer class="fixed-bottom bg-light text-center py-2">
+        <p>Merlenkyzy Nargiz SE-2204</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
 </body>
 </html>

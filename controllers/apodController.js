@@ -1,5 +1,7 @@
 const axios = require('axios');
 const APOD = require('../models/apod');
+const History = require('../models/history');
+
 
 
 exports.renderInputForm = (req, res) => {
@@ -21,9 +23,25 @@ exports.getAPOD = async (req, res) => {
     const apod = new APOD(apodData);
     await apod.save();
 
+    await logRequestToHistory('APOD', req.query, apodData);
+
     res.render('apod', { apodData });
   } catch (error) {
     console.error('Error fetching APOD:', error);
     res.status(500).send('Error fetching APOD');
   }
 };
+
+
+async function logRequestToHistory(apiName, requestData, responseData) {
+  try {
+    const historyEntry = new History({
+      apiName,
+      requestData,
+      responseData
+    });
+    await historyEntry.save();
+  } catch (error) {
+    console.error('Error saving request to history:', error);
+  }
+}

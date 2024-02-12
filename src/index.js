@@ -8,6 +8,8 @@ const adminRoute = require('../routes/admin');
 const weatherRoute = require('../routes/weather');
 const apodRoutes = require('../routes/apod');
 const newsRoutes = require('../routes/news')
+const historyRoutes = require('../routes/history'); // Import history routes
+
 
 
 
@@ -25,6 +27,7 @@ app.use('/admin', adminRoute);
 app.use('/weather', weatherRoute);
 app.use('/apod', apodRoutes);
 app.use('/news', newsRoutes)
+app.use(historyRoutes); // Use history routes
 
 
 

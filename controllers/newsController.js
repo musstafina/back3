@@ -1,5 +1,7 @@
 const axios = require('axios');
 const NewsArticle = require('../models/news');
+const History = require('../models/history');
+
 
 
 exports.renderInputForm = (req, res) => {
@@ -19,7 +21,9 @@ exports.getTopHeadlines = async (req, res) => {
     });
 
     const articles = response.data.articles.slice(0, 10); 
+    const firstArticle = articles[0]; // Get the first article
 
+    await logRequestToHistory('News', req.query, firstArticle); // Save only the first article
 
     
     articles.forEach(async article => {
@@ -42,3 +46,16 @@ exports.getTopHeadlines = async (req, res) => {
     res.status(500).send('Error fetching top headlines');
   }
 };
+
+async function logRequestToHistory(apiName, requestData, responseData) {
+  try {
+    const historyEntry = new History({
+      apiName,
+      requestData,
+      responseData:  [responseData]
+    });
+    await historyEntry.save();
+  } catch (error) {
+    console.error('Error saving request to history:', error);
+  }
+}
